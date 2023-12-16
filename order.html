@@ -35,14 +35,17 @@
 
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="css/mystyle.css">
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
-	
+
+	<script src="js/myscript.js"></script>
 
 	</head>
 	<body>
-		
+        <div id="preloader">
+            <img src="images/Spin-1s-234px.gif  " alt="Loading...">
+          </div>
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -69,108 +72,27 @@
 	</nav>
 
 	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image: url(pv.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+						<div class="display-tc js-fullheight animate-box " data-animate-effect="fadeIn">
 							<h1>Quick<em></em> Delivery</h1>
-							<h2>Ordering  Suya, Pizza, and Shawarma <a target="_blank">Just a few clicks away  </a></h2>
+							<h2 id="sub-text">Ordering  Suya, Pizza, and Shawarma <a target="_blank">Just a few clicks away  </a></h2>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
-   
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #000; /* Set the text color to black */
-        }
+    <div class="row dd">
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
-        }
-        main {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-
-        #delivery-info, #cart, #menu {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 20px;
-            width: 300px;
-        }
-        h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #000; /* Set the text color to black */
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            color: #000; /* Set the text color to black */
-        }
-
-        #total-price {
-            font-weight: bold;
-        }
-        button {
-            background-color: #e30c0c;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #07a91f;
-        }
-
-        ul {
-            padding: 0;
-            list-style-type: none;
-        }
-
-        li {
-            margin-bottom: 8px;
-            color: #000; /* Set the text color to black */
-        }
-    </style>
-
-
-</head>
-<body>
-    <header>
         <h1> Cash on Delivery</h1>
-    </header>
-
+    </div>
     <main>
-        <div id="delivery-info">
-            <h2>Delivery Information</h2>
+        <div id="delivery-info" >
+            <h2 class="card-title">Delivery Information</h2>
             <label>
                 Name:
                 <input type="text" id="customerName">
@@ -188,122 +110,41 @@
         
 
         <div id="menu">
-            <h2>Menu</h2>
-            <label>
-                <input type="checkbox" data-name="Suya" data-price="200.00" onclick="addToCart(this)"> Suya (₦200.00)
-                <input type="number" min="1" value="1" id="quantitySuya"> Quantity
-                <input type="checkbox" id="drinkSuya"> Add Soft Drink
-            </label>
-            <label>
-                <input type="checkbox" data-name="Pizza" data-price="2000.00" onclick="addToCart(this)"> Pizza (₦2000.00)
-                <input type="number" min="1" value="1" id="quantityPizza"> Quantity
-                <input type="checkbox" id="drinkPizza"> Add Soft Drink
-            </label>
-            <label>
-                <input type="checkbox" data-name="Shawarma" data-price="2000.00" onclick="addToCart(this)"> Shawarma (₦2000.00)
-                <input type="number" min="1" value="1" id="quantityShawarma"> Quantity
-                <input type="checkbox" id="drinkShawarma"> Add Soft Drink
-            </label>
+            <h2 class="card-title">Menu</h2>
+            <div class="group">
+                <input class="chk" type="checkbox" data-name="Suya" data-price="200" onchange="addToCart(this)"> <div class="amnt"> Suya (₦200)</div> 
+
+                <input type="number" min="1" value="1" id="quantitySuya" oninput="addAmount(this)">
+
+                <input class="chk" onchange="addDrink(this)" type="checkbox" id="drinkSuya" >  <class class="amnt">
+                    Add Soft Drink
+                </class> 
+            </div>
+<hr>
+            <div class="group">
+                <input class="chk" type="checkbox" data-name="Pizza" data-price="2000" onchange="addToCart(this)"> <div class="amnt">
+                    Pizza (₦2000)
+                </div>
+                <input type="number" min="1" value="1" id="quantityPizza" oninput="addAmount(this)">
+                <input type="checkbox" id="drinkPizza" class="chk" onchange="addDrink(this)"> <div class="amnt">Add Soft Drink </div> 
+            </div>
+
+<hr>
+            <div class="group">
+                <input class="chk" type="checkbox" data-name="Shawarma" data-price="2000" onchange="addToCart(this)"> <div class="amnt"> Shawarma (₦2000)</div> 
+                <input type="number" min="1" value="1" id="quantityShawarma" oninput="addAmount(this)">
+                <input type="checkbox" id="drinkShawarma" class="chk" onchange="addDrink(this)"> <div class="amnt">  Add Soft Drink </div> 
+            </div>
         </div>
         <div id="cart">
-            <h2>Your Cart</h2>
+            <h2 class="card-title">Your Cart</h2>
             <ul id="cart-items"></ul>
             <p>Total: ₦<span id="total-price">0.00</span></p>
             <button onclick="checkout()">Checkout</button>
         </div>
     </main>
 
-    <script>
-        let cartItems = [];
-        let totalPrice = 0;
 
-        function addToCart(checkbox) {
-            const itemName = checkbox.dataset.name;
-            const itemPrice = parseFloat(checkbox.dataset.price);
-            const quantity = parseInt(document.getElementById(`quantity${itemName}`).value);
-            const addDrink = document.getElementById(`drink${itemName}`).checked;
-
-            const itemTotal = itemPrice * quantity;
-
-            if (addDrink) {
-                // Add ₦500 for each soft drink
-                totalPrice += (itemTotal + 500);
-            } else {
-                totalPrice += itemTotal;
-            }
-
-            cartItems.push({ name: itemName, price: itemPrice, quantity: quantity, addDrink: addDrink });
-
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartItemsList = document.getElementById('cart-items');
-            const totalElement = document.getElementById('total-price');
-
-            // Clear existing items
-            cartItemsList.innerHTML = '';
-
-            // Update cart items list
-            cartItems.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = `${item.name} x${item.quantity} - ₦${(item.price * item.quantity).toFixed(2)}`;
-
-                cartItemsList.appendChild(li);
-
-                if (item.addDrink) {
-                    const drinkLi = document.createElement('li');
-                    drinkLi.textContent = `Soft Drink x${item.quantity} - ₦${(500 * item.quantity).toFixed(2)}`;
-                    cartItemsList.appendChild(drinkLi);
-                }
-            });
-
-            // Update total price
-            totalElement.textContent = totalPrice.toFixed(2);
-        }
-
-        function checkout() {
-            const customerName = document.getElementById('customerName').value;
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            const deliveryAddress = document.getElementById('deliveryAddress').value;
-
-            if (!customerName || !phoneNumber || !deliveryAddress || cartItems.length === 0) {
-                alert('Please fill in all the required information and add items to your cart before checking out.');
-                return;
-            }
-
-            const formData = {
-                customerName,
-                phoneNumber,
-                deliveryAddress,
-                items: cartItems,
-                total: totalPrice.toFixed(2),
-            };
-
-            // Use your actual Formspree endpoint
-            const formspreeEndpoint = 'https://formspree.io/f/mqkvokzr ';
-
-            // Create and submit a form dynamically
-            const form = document.createElement('form');
-            form.setAttribute('action', formspreeEndpoint);
-            form.setAttribute('method', 'POST');
-
-            // Add form fields for each piece of data
-            for (const key in formData) {
-                if (formData.hasOwnProperty(key)) {
-                    const input = document.createElement('input');
-                    input.setAttribute('type', 'hidden');
-                    input.setAttribute('name', key);
-                    input.setAttribute('value', JSON.stringify(formData[key]));
-                    form.appendChild(input);
-                }
-            }
-
-            // Append the form to the document and submit it
-            document.body.appendChild(form);
-            form.submit();
-        }
-    </script>
 
 
   
